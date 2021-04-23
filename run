@@ -1,0 +1,10 @@
+#!/bin/bash
+CNT=1
+while read line
+do
+	echo $CNT
+	CNT=$(($CNT+1))
+	echo $line
+	sed -i "s#\(http\)[^\"]*\(\".;\)#${line}\2#" main-1.js
+	node main-1.js
+done < wasmdepthall-1.txt
